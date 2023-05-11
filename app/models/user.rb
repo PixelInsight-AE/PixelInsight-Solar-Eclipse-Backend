@@ -4,5 +4,5 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 8, maximum: 20 }
 
 
-  has_many :cards
+  #has_many :cards
 end
