@@ -12,7 +12,10 @@ class CardsController < ApplicationController
     @card = Card.all.sample
     render 'create.json.jbuilder'
   end
-
+  def tarot_deck
+    @cards = Card.all
+    render 'index.json.jbuilder'
+  end
   
   def create
     @card = Card.new(card_params)

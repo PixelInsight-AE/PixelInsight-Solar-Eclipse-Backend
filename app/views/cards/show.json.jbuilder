@@ -1,4 +1,4 @@
-json.card do
+json.cards do
  
   json.name_of_card     @card.name_of_card
   json.card_description @card.card_description

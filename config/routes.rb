@@ -8,15 +8,20 @@ Rails.application.routes.draw do
   get '/users', to: 'users#index'
   
   
+  
   #cards
   post '/cards', to: 'cards#create'
   get '/cards', to: 'cards#index'
   get '/cards/:id', to: 'cards#show'
   get '/card_of_the_day', to: 'cards#card_of_the_day'
   get '/random_card', to: 'cards#random_card'
-
+  get '/tarot_deck', to: 'cards#tarot_deck'
+  
 
   #sessions
+  post '/sessions', to: 'sessions#create'
+  get '/authenticated', to: 'sessions#authenticated'
+  delete '/sessions', to: 'sessions#destroy'
 
 
 end

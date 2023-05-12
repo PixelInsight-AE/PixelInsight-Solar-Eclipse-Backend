@@ -1,5 +1,5 @@
 class Card < ApplicationRecord
-  #belongs_to :user
+  belongs_to :user
 
   #validate :one_card_per_day
 

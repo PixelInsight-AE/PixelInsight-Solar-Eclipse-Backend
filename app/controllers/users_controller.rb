@@ -1,15 +1,20 @@
 class UsersController < ApplicationController
-  skip_before_action :verify_authenticity_token
-
-  
+  skip_before_action :verify_authenticity_token, only: [:create]
   def create
     @user = User.new(user_params)
-    if @user.save
-      render 'create.json.jbuilder', status: :created
+    if @user and @user.save
+      render json: {
+        user: @user.as_json(only: [:username, :email])
+      }, status: :created
     else
-      render json: { errors: @user.errors.full_messages }, status: :unprocessable_entity
+      render json: {message: "User not created"}, status: :unprocessable_entity
     end
   end
+  def index
+    @users = User.all
+    render json: @users
+  end
+  
 
   private
   def user_params
