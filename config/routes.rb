@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/cards', to: 'cards#index'
   get '/cards/:id', to: 'cards#show'
   get '/card_of_the_day', to: 'cards#card_of_the_day'
+  get '/random_card', to: 'cards#random_card'
 
 
   #sessions

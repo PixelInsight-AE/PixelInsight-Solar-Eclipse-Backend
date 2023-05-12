@@ -1,5 +1,5 @@
 json.cards do
-  json.id @card.id
+  
   json.name_of_card @card.name_of_card
   json.card_description @card.card_description
   json.astrology @card.astrology

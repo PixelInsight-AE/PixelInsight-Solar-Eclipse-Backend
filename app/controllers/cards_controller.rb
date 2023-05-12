@@ -8,14 +8,23 @@ class CardsController < ApplicationController
     @card = Card.order(created_at: :desc).first
     render 'card_of_day.json.jbuilder'
   end
+  def random_card
+    @card = Card.all.sample
+    render 'create.json.jbuilder'
+  end
 
   
   def create
     @card = Card.new(card_params)
-    if @card.save
-      render 'create.json.jbuilder', status: :created
+    #make sure card is not already in database
+    if Card.find_by(name_of_card: @card.name_of_card)
+      render json: { errors: "Card already exists" }, status: :unprocessable_entity
     else
-      render json: { errors: @card.errors.full_messages }, status: :unprocessable_entity
+      if @card.save
+        render 'create.json.jbuilder', status: :created
+      else
+        render json: { errors: @card.errors.full_messages }, status: :unprocessable_entity
+      end
     end
   end
   def show
