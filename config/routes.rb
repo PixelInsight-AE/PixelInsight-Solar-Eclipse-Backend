@@ -10,13 +10,13 @@ Rails.application.routes.draw do
   
   
   #cards
-  post '/cards', to: 'cards#create'
+  post '/cards', to: 'cards#create_user_card'
   get '/cards', to: 'cards#index'
   get '/cards/:id', to: 'cards#show'
   get '/card_of_the_day', to: 'cards#card_of_the_day'
   get '/random_card', to: 'cards#random_card'
   get '/tarot_deck', to: 'cards#tarot_deck'
-  
+  get '/users/:username/cards', to: 'cards#index_user_cards'
 
   #sessions
   post '/sessions', to: 'sessions#create'

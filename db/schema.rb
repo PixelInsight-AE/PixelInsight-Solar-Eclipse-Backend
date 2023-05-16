@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_12_192611) do
+ActiveRecord::Schema.define(version: 2023_05_13_003110) do
 
   create_table "cards", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -27,6 +27,8 @@ ActiveRecord::Schema.define(version: 2023_05_12_192611) do
     t.boolean "user_feeling"
     t.string "user_thoughts"
     t.integer "card_id"
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -48,5 +50,6 @@ ActiveRecord::Schema.define(version: 2023_05_12_192611) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
+  add_foreign_key "cards", "users"
   add_foreign_key "sessions", "users"
 end
