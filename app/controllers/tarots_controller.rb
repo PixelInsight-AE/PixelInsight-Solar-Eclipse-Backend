@@ -5,6 +5,8 @@ class TarotsController < ApplicationController
   end
   def create
     @tarot = Tarot.new(tarot_params)
+    @tarot.save
+    
     render 'create.json.jbuilder'
   end
 

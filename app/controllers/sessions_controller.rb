@@ -22,17 +22,18 @@ class SessionsController < ApplicationController
   def authenticated
     token = cookies.permanent.signed[:sea_sessions_token]
     #checking to see if session token valid from expiration
-    session = Session.active.find_by(token: token)
+    session = Session.find_by(token: token)
 
     if session
       user = session.user
       render json: {
-        authenticated: true,
+        username: user.username,
+        isAuthenticated: true,
         
       }
     else
       render json: {
-        authenticated: false
+        isAuthenticated: false
       } 
     end
   end
