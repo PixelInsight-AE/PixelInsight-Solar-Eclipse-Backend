@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :verify_authenticity_token
+  
   def create
     @user = User.find_by(username: params[:user][:username])
     if @user and BCrypt::Password.new(@user.password) == params[:user][:password]
@@ -9,21 +9,26 @@ class SessionsController < ApplicationController
         httponly: true
       }
       render json: {
-        success: true,
+        logged_in: true,
+        user: @user.as_json(only: [:username, :email]),
+        
+        
       }
     else
-      render json: {message: "Invalid username or password"}, status: :unauthorized
+      render json: {message: "Invalid username or password"}, status: :unprocessable_entity
     end
   end
   
   def authenticated
     token = cookies.permanent.signed[:sea_sessions_token]
-    session = Session.find_by(token: token)
+    #checking to see if session token valid from expiration
+    session = Session.active.find_by(token: token)
 
     if session
       user = session.user
       render json: {
         authenticated: true,
+        
       }
     else
       render json: {
@@ -37,7 +42,7 @@ class SessionsController < ApplicationController
     if session
       session.destroy
       render json: {
-        success: true
+        logged_in: false
       }
     else
       render json: {message: "Not authenticated"}, status: :unauthorized

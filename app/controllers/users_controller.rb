@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :verify_authenticity_token, only: [:create]
+  
   def create
     @user = User.new(user_params)
     if @user and @user.save
@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @users = User.all
     render json: @users
   end
-  
+
 
   private
   def user_params
