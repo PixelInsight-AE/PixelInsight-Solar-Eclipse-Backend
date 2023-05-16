@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_16_191535) do
+ActiveRecord::Schema.define(version: 2023_05_16_202329) do
 
   create_table "cards", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "name_of_card"
-    t.binary "card_image"
+    t.string "card_image"
     t.string "card_description"
     t.string "meaning_up"
     t.string "meaning_rev"

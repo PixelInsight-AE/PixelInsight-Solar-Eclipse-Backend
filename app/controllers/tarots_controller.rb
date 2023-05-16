@@ -3,7 +3,11 @@ class TarotsController < ApplicationController
     @tarot = Tarot.all
     render json: @tarot
   end
-  
+  def create
+    @tarot = Tarot.new(tarot_params)
+    render 'create.json.jbuilder'
+  end
+
   def random_card
     @tarot = Tarot.all.sample
     render 'create.json.jbuilder'
@@ -19,5 +23,7 @@ class TarotsController < ApplicationController
   end
 
 
-  
+  def tarot_params
+    params.require(:tarot).permit(:name_of_card, :card_image, :card_meaning, :card_description, :meaning_up, :meaning_rev, :astrology, :numerology, :major_minor, :element)
+  end
 end

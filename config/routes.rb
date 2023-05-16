@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   get '/tarot_deck', to: 'tarots#index'
   get '/tarot_deck/:id', to: 'tarots#show'
+  post '/tarot_deck', to: 'tarots#create'
   get '/random_card', to: 'tarots#random_card'
 
   
