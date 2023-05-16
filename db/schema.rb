@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2023_05_13_003110) do
+ActiveRecord::Schema.define(version: 2023_05_16_181903) do
 
   create_table "cards", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
@@ -37,6 +37,22 @@ ActiveRecord::Schema.define(version: 2023_05_13_003110) do
     t.string "token"
     t.integer "user_id", null: false
     t.index ["user_id"], name: "index_sessions_on_user_id"
+  end
+
+  create_table "tarot_decks", force: :cascade do |t|
+    t.string "name_of_card"
+    t.string "card_image"
+    t.string "card_description"
+    t.string "meaning_up"
+    t.string "meaning_rev"
+    t.string "astrology"
+    t.integer "numerology"
+    t.string "element"
+    t.boolean "major_minor"
+    t.boolean "user_feeling"
+    t.string "user_thoughts"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
