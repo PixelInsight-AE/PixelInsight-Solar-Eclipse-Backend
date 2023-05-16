@@ -20,14 +20,7 @@ class CardsController < ApplicationController
     @card = Card.order(created_at: :desc).first
     render 'card_of_day.json.jbuilder'
   end
-  def random_card
-    @card = Card.all.sample
-    render 'create.json.jbuilder'
-  end
-  def tarot_deck
-    @cards = Card.all
-    render 'index.json.jbuilder'
-  end
+ 
   def create_user_card
     token = cookies.permanent.signed[:sea_sessions_token]
     session = Session.find_by(token: token)

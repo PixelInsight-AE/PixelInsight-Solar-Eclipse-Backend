@@ -1,0 +1,2 @@
+class Tarot < ApplicationRecord
+end

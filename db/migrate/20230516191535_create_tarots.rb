@@ -1,18 +1,15 @@
-class CreateTarotDecks < ActiveRecord::Migration[6.1]
+class CreateTarots < ActiveRecord::Migration[6.1]
   def change
-    create_table :tarot_decks do |t|
+    create_table :tarots do |t|
       t.string :name_of_card
       t.string :card_image
       t.string :card_description
       t.string :meaning_up
       t.string :meaning_rev
       t.string :astrology
-      t.integer :numerology
+      t.string :numerology
       t.string :element
-      t.boolean :major_minor
-      t.boolean :user_feeling
-      t.string :user_thoughts
-      
+      t.string :major_minor
 
       t.timestamps
     end
