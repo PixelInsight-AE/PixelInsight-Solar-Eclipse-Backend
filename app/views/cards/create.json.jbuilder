@@ -2,6 +2,7 @@ json.cards do
   
   json.name_of_card @card.name_of_card
   json.card_description @card.card_description
+  json.card_image @card.card_image
   json.astrology @card.astrology
   json.element @card.element
   json.meaning_rev @card.meaning_rev

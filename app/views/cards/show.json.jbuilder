@@ -7,6 +7,7 @@ json.cards do
   json.meaning_rev      @card.meaning_rev
   json.meaning_up       @card.meaning_up
   json.numerology       @card.numerology
+  json.card_image       @card.card_image
   json.major_minor      @card.major_minor
   json.user_feeling     @card.user_feeling
   json.user_thoughts    @card.user_thoughts

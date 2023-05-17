@@ -11,5 +11,6 @@ json.cards do
     json.major_minor card.major_minor
     json.user_feeling card.user_feeling
     json.user_thoughts card.user_thoughts
+    json.card_image card.card_image
   end
 end
